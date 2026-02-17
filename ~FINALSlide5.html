@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 5 - Mama Family Day</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --charcoal: #0E0E0E;
+            --off-white: #F5F5F5;
+            --neon-pink: #FF007A;
+            --acid-yellow: #00D4FF;
+            --electric-green: #00FFAA;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body {
+            height: 100vh;
+            height: 100svh;
+            background: var(--charcoal);
+            font-family: 'Inter', sans-serif;
+            color: #FFFFFF;
+            overflow: hidden;
+        }
+        .slide {
+            height: 100vh;
+            height: 100svh;
+            width: 100vw;
+            position: relative;
+            display: flex;
+            overflow: hidden;
+        }
+        .slide-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('Mama Skypool8.jpg');
+            background-size: cover;
+            background-position: center center;
+            z-index: 0;
+        }
+        .slide-bg::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(14, 14, 14, 0.35);
+        }
+        .slide-content {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            padding: 30px 40px;
+            overflow: hidden;
+        }
+        .split-layout {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            gap: 30px;
+        }
+
+        .split-left {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 15px;
+            background: linear-gradient(to right, rgba(14,14,14,0.6) 0%, transparent 100%);
+            border-radius: 12px;
+        }
+        .accent-bar {
+            width: 3px;
+            height: 40px;
+            background: var(--acid-yellow);
+            margin-bottom: 16px;
+            border-radius: 2px;
+        }
+        .section-label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .section-label .line {
+            width: 16px;
+            height: 2px;
+            background: var(--acid-yellow);
+            margin-right: 8px;
+        }
+        .section-label span {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--acid-yellow);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.95);
+        }
+        h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 46px;
+            line-height: 0.95;
+            margin-bottom: 12px;
+            letter-spacing: 0.02em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.95), 0 0 8px rgba(0,0,0,0.5);
+        }
+        .subtitle {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 28px;
+            color: var(--acid-yellow);
+            letter-spacing: 0.04em;
+            text-shadow: 0 0 10px rgba(255, 230, 0, 0.2);
+            margin-bottom: 16px;
+        }
+        .body-text {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 16px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.95), 0 0 4px rgba(0,0,0,0.5);
+        }
+        .highlight-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 3px solid var(--acid-yellow);
+            border-radius: 10px;
+            padding: 12px;
+            margin-top: 8px;
+        }
+        .highlight-box h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 19px;
+            color: var(--acid-yellow);
+            margin-bottom: 8px;
+            letter-spacing: 0.04em;
+            text-shadow: 0 0 8px rgba(255, 230, 0, 0.2);
+        }
+        .feature-list {
+            list-style: none;
+            margin: 8px 0;
+        }
+        .feature-list li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 6px;
+            font-size: 13px;
+            line-height: 1.4;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.95), 0 0 3px rgba(0,0,0,0.5);
+        }
+        .marker {
+            width: 5px;
+            height: 5px;
+            background: var(--acid-yellow);
+            border-radius: 50%;
+            margin-right: 8px;
+            margin-top: 5px;
+            flex-shrink: 0;
+        }
+
+        .split-right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 15px;
+            background: linear-gradient(to left, rgba(14,14,14,0.6) 0%, transparent 100%);
+            border-radius: 12px;
+        }
+        .proposal-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 3px solid var(--acid-yellow);
+            border-radius: 12px;
+            padding: 16px;
+        }
+        .proposal-box h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 23px;
+            color: var(--acid-yellow);
+            margin-bottom: 12px;
+            letter-spacing: 0.04em;
+            text-shadow: 0 0 8px rgba(255, 230, 0, 0.2);
+        }
+        .proposal-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px 16px;
+            margin-bottom: 12px;
+        }
+        .proposal-item {
+            display: flex;
+            flex-direction: column;
+        }
+        .proposal-item.full-width {
+            grid-column: 1 / -1;
+        }
+        .proposal-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 2px;
+        }
+        .proposal-value {
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.3;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.95), 0 0 3px rgba(0,0,0,0.5);
+        }
+        .retainer-section {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .retainer-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 17px;
+            color: var(--acid-yellow);
+            margin-bottom: 8px;
+            letter-spacing: 0.04em;
+        }
+        .retainer-option {
+            font-size: 13px;
+            margin-bottom: 4px;
+            padding: 6px 10px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 6px;
+            border-left: 3px solid var(--acid-yellow);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.95), 0 0 3px rgba(0,0,0,0.5);
+        }
+        .pilot-note {
+            margin-top: 10px;
+            font-size: 12px;
+            line-height: 1.4;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.95), 0 0 3px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="slide-bg"></div>
+        <div class="slide-content">
+            <div class="split-layout">
+                <div class="split-left">
+                    <div class="accent-bar"></div>
+                    <div class="section-label">
+                        <div class="line"></div>
+                        <span>05 / New Revenue Stream</span>
+                    </div>
+                    <h2>Mama Family Day</h2>
+                    <div class="subtitle">Sunrise to Sunset Sundays</div>
+                    <div class="body-text">
+                        Completing the 7-day revenue cycle. While evenings capture the party crowd, Sundays capture the family segment. A full-day activation where kids stay occupied with supervised activities while parents enjoy pool time, fresh air, and quality dining.
+                    </div>
+                    <div class="highlight-box">
+                        <h4>What We Deliver</h4>
+                        <ul class="feature-list">
+                            <li><div class="marker"></div>Kids Zone: Professional childminders, structured activity zones, certified pool supervision - parents actually relax</li>
+                            <li><div class="marker"></div>Entertainment: Live acoustic brunch vibes transitioning to sunset DJ sets - parents get their Sunday too</li>
+                            <li><div class="marker"></div>12-hour operation: 9am to 10pm full venue activation</li>
+                            <li><div class="marker"></div>Family-focused marketing: Mom influencers, parent networks, brand collaborations</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="split-right">
+                    <div class="proposal-box">
+                        <h4>The Proposal</h4>
+                        <div class="proposal-grid">
+                            <div class="proposal-item">
+                                <span class="proposal-label">Tentative Launch</span>
+ 				<span class="proposal-value highlight-value">Sunday, 05 April 2026</span>
+                            </div>
+                            <div class="proposal-item">
+                                <span class="proposal-label">Frequency</span>
+                                <span class="proposal-value">Every Sunday</span>
+                            </div>
+                            <div class="proposal-item">
+                                <span class="proposal-label">Time</span>
+                                <span class="proposal-value">9am to 10pm</span>
+                            </div>
+                            <div class="proposal-item">
+                                <span class="proposal-label">Theme</span>
+                                <span class="proposal-value">Family-Friendly / For The Kids</span>
+                            </div>
+                            <div class="proposal-item full-width">
+                                <span class="proposal-label">Entertainment</span>
+                                <span class="proposal-value">Live Musician + MAMA Resident DJ + Interactive Kids Shows</span>
+                            </div>
+                            <div class="proposal-item full-width">
+                                <span class="proposal-label">F&B Highlights</span>
+                                <span class="proposal-value">Breakfast • Roast • BBQ • Other Deals & Discounts • Kids' specials</span>
+                            </div>
+                        </div>
+                        <div class="retainer-section">
+                            <div class="retainer-title">Marketing / Entertainment Retainer</div>
+                            <div class="retainer-option">
+                                <strong>Per event:</strong> AED 6,500/- plus 15% F&B revenue share
+                            </div>
+                        </div>
+                        <div class="pilot-note">
+                            8-week launch to make Mama the only Sunday destination that matters. While competitors rest, you capture 100% of the family market. 12 hours. Two audiences. One unmatched experience. Modeled on successful family concepts in London/Miami - adapted for Dubai.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
