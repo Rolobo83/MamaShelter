@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 6 - Brazil Comes to Mama</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --charcoal: #0E0E0E;
+            --off-white: #F5F5F5;
+            --neon-pink: #FF007A;
+            --acid-yellow: #FFE600;
+            --electric-green: #00FFAA;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body {
+            height: 100vh;
+            height: 100svh;
+            background: var(--charcoal);
+            font-family: 'Inter', sans-serif;
+            color: #FFFFFF;
+            overflow: hidden;
+        }
+        .slide {
+            height: 100vh;
+            height: 100svh;
+            width: 100vw;
+            position: relative;
+            display: flex;
+            overflow: hidden;
+        }
+        .slide-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('DSC05623.jpg');
+            background-size: cover;
+            background-position: center center;
+            z-index: 0;
+        }
+        .slide-bg::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(14, 14, 14, 0.35);
+        }
+        .slide-content {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            padding: 25px 35px;
+            overflow: hidden;
+            align-items: center;
+            justify-content: center;
+        }
+        .split-layout {
+            display: flex;
+            width: 100%;
+            height: 95vh;
+            gap: 25px;
+        }
+
+        .split-left {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 12px;
+            background: linear-gradient(to right, rgba(14,14,14,0.6) 0%, transparent 100%);
+            border-radius: 12px;
+        }
+        .accent-bar {
+            width: 3px;
+            height: 35px;
+            background: var(--acid-yellow);
+            margin-bottom: 12px;
+            border-radius: 2px;
+        }
+        .section-label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .section-label .line {
+            width: 16px;
+            height: 2px;
+            background: var(--acid-yellow);
+            margin-right: 8px;
+        }
+        .section-label span {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--acid-yellow);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.95);
+        }
+        h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 42px;
+            line-height: 0.95;
+            margin-bottom: 10px;
+            letter-spacing: 0.02em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.95), 0 0 8px rgba(0,0,0,0.5);
+        }
+        .subtitle {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 24px;
+            color: var(--acid-yellow);
+            letter-spacing: 0.04em;
+            text-shadow: 0 0 10px rgba(255, 230, 0, 0.2);
+            margin-bottom: 12px;
+        }
+        .body-text {
+            font-size: 14px;
+            line-height: 1.4;
+            margin-bottom: 12px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.95), 0 0 4px rgba(0,0,0,0.5);
+        }
+        .highlight-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 3px solid var(--acid-yellow);
+            border-radius: 10px;
+            padding: 10px;
+            margin-top: 6px;
+        }
+        .highlight-box h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 17px;
+            color: var(--acid-yellow);
+            margin-bottom: 6px;
+            letter-spacing: 0.04em;
+            text-shadow: 0 0 8px rgba(255, 230, 0, 0.2);
+        }
+        .highlight-text {
+            font-size: 13px;
+            line-height: 1.4;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.95), 0 0 4px rgba(0,0,0,0.5);
+        }
+        .highlight-number {
+            color: var(--acid-yellow);
+            font-weight: 600;
+        }
+        .feature-list {
+            list-style: none;
+            margin: 6px 0;
+        }
+        .feature-list li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 4px;
+            font-size: 12px;
+            line-height: 1.3;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.95), 0 0 3px rgba(0,0,0,0.5);
+        }
+        .marker {
+            width: 5px;
+            height: 5px;
+            background: var(--acid-yellow);
+            border-radius: 50%;
+            margin-right: 8px;
+            margin-top: 4px;
+            flex-shrink: 0;
+        }
+        .venue-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px;
+            margin-top: 6px;
+            font-size: 10px;
+            opacity: 0.9;
+        }
+        .venue-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .venue-dot {
+            width: 4px;
+            height: 4px;
+            background: var(--acid-yellow);
+            border-radius: 50%;
+        }
+
+        .split-right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 12px;
+            background: linear-gradient(to left, rgba(14,14,14,0.6) 0%, transparent 100%);
+            border-radius: 12px;
+        }
+        .proposal-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 3px solid var(--acid-yellow);
+            border-radius: 12px;
+            padding: 14px;
+        }
+        .proposal-box h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 21px;
+            color: var(--acid-yellow);
+            margin-bottom: 10px;
+            letter-spacing: 0.04em;
+            text-shadow: 0 0 8px rgba(255, 230, 0, 0.2);
+        }
+        .proposal-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 14px;
+            margin-bottom: 10px;
+        }
+        .proposal-item {
+            display: flex;
+            flex-direction: column;
+        }
+        .proposal-item.full-width {
+            grid-column: 1 / -1;
+        }
+        .proposal-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 2px;
+        }
+        .proposal-value {
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.3;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.95), 0 0 3px rgba(0,0,0,0.5);
+        }
+        .highlight-value {
+            color: var(--acid-yellow);
+            font-weight: 600;
+        }
+        .entry-box {
+            background: rgba(255, 230, 0, 0.1);
+            border: 1px solid rgba(255, 230, 0, 0.3);
+            border-radius: 8px;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+        .entry-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 15px;
+            color: var(--acid-yellow);
+            margin-bottom: 4px;
+            letter-spacing: 0.04em;
+        }
+        .entry-line {
+            font-size: 11px;
+            margin-bottom: 3px;
+            line-height: 1.3;
+        }
+        .entry-line:last-child {
+            margin-bottom: 0;
+        }
+        .revenue-tier {
+            font-size: 11px;
+            margin-top: 6px;
+            padding: 6px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 6px;
+            border-left: 3px solid var(--acid-yellow);
+        }
+        .retainer-section {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .retainer-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 16px;
+            color: var(--acid-yellow);
+            margin-bottom: 6px;
+            letter-spacing: 0.04em;
+        }
+        .retainer-option {
+            font-size: 12px;
+            margin-bottom: 4px;
+            padding: 5px 8px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 6px;
+            border-left: 3px solid var(--acid-yellow);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.95), 0 0 3px rgba(0,0,0,0.5);
+        }
+        .pilot-note {
+            margin-top: 8px;
+            font-size: 11px;
+            line-height: 1.3;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.95), 0 0 3px rgba(0,0,0,0.5);
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+    <div class="slide">
+        <div class="slide-bg"></div>
+        <div class="slide-content">
+            <div class="split-layout">
+                <div class="split-left">
+                    <div class="accent-bar"></div>
+                    <div class="section-label">
+                        <div class="line"></div>
+                        <span>06 / Signature Concept</span>
+                    </div>
+                    <h2>Brazil Comes to Mama</h2>
+                    <div class="subtitle">High-Energy Samba Nights</div>
+                    <div class="body-text">
+                        While Ladies Night and Karaoke optimize your existing calendar, Brazil Comes to Mama creates a new revenue pillar. Dubai's ONLY authentic monthly 'taste of Brazil' experience. Attracts new audiences outside your regular demographic.
+                    </div>
+                    <div class="highlight-box">
+                        <h4>Proven Track Record</h4>
+                        <div class="highlight-text">
+                            <span class="highlight-number">26 events</span> across 8 venues since 2023. Largest event: <span class="highlight-number">600 guests</span>. While other promoters struggle to compete, this database and presentation capability cannot be replicated.
+                        </div>
+                        <div class="venue-grid">
+                            <div class="venue-item"><div class="venue-dot"></div>The Arena at Phileas Fogg's (6 events)</div>
+                            <div class="venue-item"><div class="venue-dot"></div>Double Decker (8 events)</div>
+                            <div class="venue-item"><div class="venue-dot"></div>Mr. Miyagi's (3 events)</div>
+                            <div class="venue-item"><div class="venue-dot"></div>Barasti (1 event)</div>
+                            <div class="venue-item"><div class="venue-dot"></div>Soul Street (1 event)</div>
+                            <div class="venue-item"><div class="venue-dot"></div>49ERs Abu Dhabi (3 events)</div>
+                            <div class="venue-item"><div class="venue-dot"></div>Culture Club (2 events)</div>
+                            <div class="venue-item"><div class="venue-dot"></div>Offside (2 events)</div>
+                        </div>
+                    </div>
+                    <div class="highlight-box" style="margin-top: 8px; padding-bottom: 4px;">
+                        <h4>What We Bring</h4>
+                        <ul class="feature-list">
+                            <li><div class="marker"></div><span class="highlight-number">@raizesdobrazildxb</span>: 2,500 verified Brazilians in UAE</li>
+                            <li><div class="marker"></div>2,000-contact database of Brazilian attendees</li>
+                            <li><div class="marker"></div>5-piece live Samba band + Brazilian DJs + Interactive Brazilian-themed performers</li>
+                            <li><div class="marker"></div>Extended network: Brazilian Cabin Crew, Influencers, WhatsApp and Facebook groups</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="split-right">
+                    <div class="proposal-box">
+                        <h4>The Proposal</h4>
+                        <div class="proposal-grid">
+                            <div class="proposal-item">
+                                <span class="proposal-label">Tentative Date</span>
+                                <span class="proposal-value highlight-value">Saturday, 04 April 2026</span>
+                            </div>
+                            <div class="proposal-item">
+                                <span class="proposal-label">Frequency</span>
+                                <span class="proposal-value">One Saturday per month</span>
+                            </div>
+                            <div class="proposal-item">
+                                <span class="proposal-label">Time</span>
+                                <span class="proposal-value">9pm to 3am</span>
+                            </div>
+                            <div class="proposal-item">
+                                <span class="proposal-label">Capacity</span>
+                                <span class="proposal-value">Bar Zone Activation</span>
+                            </div>
+                        </div>
+                        
+                        <div class="entry-box">
+                            <div class="entry-title">Entry Structure</div>
+                            <div class="entry-line"><strong>Ladies:</strong> Free entry before 11pm and AED 60 after (1 welcome drink)</div>
+                            <div class="entry-line"><strong>Gents:</strong> AED 100 all night (1 welcome drink)</div>
+                            <div style="font-size: 10px; margin-top: 4px; opacity: 0.9;">Welcome drink: House Spirit, House Wine, or Bottle Beer</div>
+                        </div>
+
+                        <div class="proposal-item full-width" style="margin-bottom: 8px;">
+                            <span class="proposal-label">F&B Concept</span>
+                            <span class="proposal-value">Churrasco live BBQ • Flavoured Caipirinhas • Brazilian Food menu • A-La-Carte</span>
+                        </div>
+
+                        <div class="revenue-tier">
+                            <strong>Revenue Share Tiers:</strong> 10% (10-20K AED) • 15% (20-30K AED) • 20% (30K+ AED)
+                        </div>
+
+                        <div class="retainer-section">
+                            <div class="retainer-title">Marketing / Entertainment Retainer</div>
+                            <div class="retainer-option">
+                                <strong>AED 6,000/-</strong> per event covering: entertainment, artwork, social advertising, photo/video coverage, Influencers, other promotional tactics
+                            </div>
+                        </div>
+                        <div class="pilot-note">
+                            Monthly signature event building Mama's reputation as Dubai's Brazilian cultural hub. Venue references available upon request. Detailed scoping meeting to finalize configuration.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
